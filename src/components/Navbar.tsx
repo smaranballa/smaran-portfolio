@@ -11,50 +11,17 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ onOpenContact, onOpenWhatsApp }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState<PageRoute>('home');
   const { currentPage, navigate } = useRouter();
 
-  // Scroll spy for smooth, accurate navbar highlighting
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 24);
-
-      if (currentPage === 'home') {
-        const sections: { id: string; route: PageRoute }[] = [
-          { id: 'contact', route: 'contact' },
-          { id: 'about', route: 'about' },
-          { id: 'process', route: 'process' },
-          { id: 'services', route: 'services' },
-          { id: 'work', route: 'work' },
-          { id: 'hero', route: 'home' },
-        ];
-
-        // Bottom of page detection
-        const isNearBottom =
-          window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60;
-        if (isNearBottom) {
-          setActiveSection('contact');
-          return;
-        }
-
-        const scrollY = window.scrollY + 180; // Offset for navbar height
-        for (const sec of sections) {
-          const el = document.getElementById(sec.id);
-          if (el) {
-            const top = el.offsetTop;
-            if (scrollY >= top) {
-              setActiveSection(sec.route);
-              break;
-            }
-          }
-        }
-      }
     };
 
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [currentPage]);
+  }, []);
 
   const navLinks: { name: string; route: PageRoute }[] = [
     { name: 'Work', route: 'work' },
@@ -64,62 +31,24 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact, onOpenWhatsApp })
     { name: 'Contact', route: 'contact' },
   ];
 
-  const getHeaderBarHeight = () => {
-    // Measure only the top bar — never the open mobile drawer.
-    const bar = document.getElementById('main-navbar-bar');
-    if (bar) return bar.getBoundingClientRect().height;
-    return 64;
-  };
-
-  const scrollToHomeSection = (route: PageRoute) => {
-    if (route === 'home') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      setActiveSection('home');
-      return;
-    }
-
-    const el = document.getElementById(route);
-    if (!el) {
-      navigate(route);
-      return;
-    }
-
-    const navHeight = getHeaderBarHeight();
-    const isMobile = window.matchMedia('(max-width: 767px)').matches;
-    // Desktop tucks a little section padding; mobile needs a small gap under the bar only.
-    const adjust = isMobile ? 0 : 28;
-    const top = el.getBoundingClientRect().top + window.scrollY - navHeight - 8 + adjust;
-    window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
-    setActiveSection(route);
-  };
-
   const handleNavClick = (route: PageRoute) => {
-    const menuWasOpen = mobileMenuOpen;
     setMobileMenuOpen(false);
 
-    const run = () => {
+    // Always use dedicated page URLs so nav behavior is consistent
+    // (e.g. /about), whether you start from home or a case study.
+    if (route === 'home') {
       if (currentPage === 'home') {
-        scrollToHomeSection(route);
-        return;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        navigate('home');
       }
-      navigate(route);
-    };
-
-    // Wait for the mobile drawer to unmount so layout/height is stable before scrolling.
-    if (menuWasOpen) {
-      requestAnimationFrame(() => {
-        requestAnimationFrame(run);
-      });
       return;
     }
 
-    run();
+    navigate(route);
   };
 
   const isRouteActive = (route: PageRoute) => {
-    if (currentPage === 'home') {
-      return activeSection === route;
-    }
     if (route === 'work' && currentPage === 'project-detail') return true;
     return currentPage === route;
   };
