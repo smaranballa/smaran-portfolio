@@ -73,7 +73,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenContact }) => 
           <div className="lg:col-span-5">
             <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-[#E9E4DB] border border-[#161513]/10 shadow-[0_16px_40px_rgba(0,0,0,0.06)] aspect-[4/5] max-w-md mx-auto group">
               <img
-                src="/smaran.jpg"
+                src={`${import.meta.env.BASE_URL}smaran.jpg`}
                 alt="Smaran — Digital Growth Partner"
                 className="w-full h-full object-cover object-top filter grayscale contrast-[1.04] brightness-95 transition-transform duration-700 group-hover:scale-[1.02]"
                 loading="lazy"
