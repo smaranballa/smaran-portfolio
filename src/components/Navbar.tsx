@@ -64,28 +64,56 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact, onOpenWhatsApp })
     { name: 'Contact', route: 'contact' },
   ];
 
-  const handleNavClick = (route: PageRoute) => {
-    setMobileMenuOpen(false);
+  const getHeaderBarHeight = () => {
+    // Measure only the top bar — never the open mobile drawer.
+    const bar = document.getElementById('main-navbar-bar');
+    if (bar) return bar.getBoundingClientRect().height;
+    return 64;
+  };
 
-    if (currentPage === 'home') {
-      if (route === 'home') {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        setActiveSection('home');
-        return;
-      }
-      const el = document.getElementById(route);
-      if (el) {
-        const nav = document.getElementById('main-navbar');
-        const navHeight = nav?.getBoundingClientRect().height ?? 72;
-        // Tuck a bit of section top padding under the navbar so the title sits tight underneath.
-        const top = el.getBoundingClientRect().top + window.scrollY - navHeight + 36;
-        window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
-        setActiveSection(route);
-        return;
-      }
+  const scrollToHomeSection = (route: PageRoute) => {
+    if (route === 'home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setActiveSection('home');
+      return;
     }
 
-    navigate(route);
+    const el = document.getElementById(route);
+    if (!el) {
+      navigate(route);
+      return;
+    }
+
+    const navHeight = getHeaderBarHeight();
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
+    // Desktop tucks a little section padding; mobile needs a small gap under the bar only.
+    const adjust = isMobile ? 0 : 28;
+    const top = el.getBoundingClientRect().top + window.scrollY - navHeight - 8 + adjust;
+    window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+    setActiveSection(route);
+  };
+
+  const handleNavClick = (route: PageRoute) => {
+    const menuWasOpen = mobileMenuOpen;
+    setMobileMenuOpen(false);
+
+    const run = () => {
+      if (currentPage === 'home') {
+        scrollToHomeSection(route);
+        return;
+      }
+      navigate(route);
+    };
+
+    // Wait for the mobile drawer to unmount so layout/height is stable before scrolling.
+    if (menuWasOpen) {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(run);
+      });
+      return;
+    }
+
+    run();
   };
 
   const isRouteActive = (route: PageRoute) => {
@@ -105,7 +133,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact, onOpenWhatsApp })
           : 'bg-[#FBF9F5]/60 backdrop-blur-xs py-4.5'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between">
+      <div
+        id="main-navbar-bar"
+        className="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between"
+      >
         {/* Brand / Logo */}
         <button
           onClick={() => handleNavClick('home')}

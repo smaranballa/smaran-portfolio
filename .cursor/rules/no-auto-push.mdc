@@ -1,0 +1,11 @@
+---
+description: Never push to GitHub unless the user explicitly asks
+alwaysApply: true
+---
+
+# Git push policy
+
+- Do **not** run `git push`, `gh-pages` deploy, or any remote publish after making code changes.
+- Only push or deploy when the user **explicitly** asks in that message (e.g. "push", "upload to github", "deploy").
+- Local commits are also only when the user asks to commit.
+- Fixing code and verifying locally does not imply permission to push.
