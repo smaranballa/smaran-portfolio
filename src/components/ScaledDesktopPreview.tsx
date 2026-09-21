@@ -16,7 +16,7 @@ export const ScaledDesktopPreview: React.FC<ScaledDesktopPreviewProps> = ({
   nativeHeight = 820,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [scale, setScale] = useState<number>(0.75);
+  const [scale, setScale] = useState<number>(1);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -24,8 +24,7 @@ export const ScaledDesktopPreview: React.FC<ScaledDesktopPreviewProps> = ({
       if (!containerRef.current) return;
       const width = containerRef.current.clientWidth;
       if (width > 0) {
-        const calculatedScale = Math.min(width / nativeWidth, 1);
-        setScale(calculatedScale);
+        setScale(Math.min(width / nativeWidth, 1));
       }
     };
 
@@ -44,7 +43,8 @@ export const ScaledDesktopPreview: React.FC<ScaledDesktopPreviewProps> = ({
     };
   }, [nativeWidth]);
 
-  const containerHeight = Math.max(Math.round(nativeHeight * scale), 420);
+  // Height must match scaled content exactly — a larger min-height left a black gap below.
+  const containerHeight = Math.max(Math.round(nativeHeight * scale), 1);
 
   if (!url) {
     return (
@@ -57,7 +57,7 @@ export const ScaledDesktopPreview: React.FC<ScaledDesktopPreviewProps> = ({
   return (
     <div
       ref={containerRef}
-      className={`w-full relative overflow-hidden bg-[#161513] select-none ${className}`}
+      className={`w-full relative overflow-hidden bg-[#F4F0E8] select-none ${className}`}
       style={{ height: `${containerHeight}px` }}
     >
       {isLoading && (
@@ -67,7 +67,6 @@ export const ScaledDesktopPreview: React.FC<ScaledDesktopPreviewProps> = ({
         </div>
       )}
 
-      {/* Scaled Canvas */}
       <div
         style={{
           width: `${nativeWidth}px`,

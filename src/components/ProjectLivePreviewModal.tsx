@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Monitor, Smartphone, MessageCircle, ExternalLink, ArrowRight, RotateCw, ShieldCheck } from 'lucide-react';
 import { PORTFOLIO_PROJECTS, PERSONAL_INFO } from '../data/portfolioData';
+import { ScaledMobilePreview } from './ScaledMobilePreview';
 
 interface ProjectLivePreviewModalProps {
   projectId: string | null;
@@ -210,19 +211,11 @@ export const ProjectLivePreviewModal: React.FC<ProjectLivePreviewModalProps> = (
                   </div>
 
                   {/* Mobile Screen Iframe - Flat top edge ensures logo and menu are never clipped */}
-                  <div className="flex-1 relative bg-white rounded-b-[36px] overflow-hidden">
-                    {isLoading && (
-                      <div className="absolute inset-0 bg-[#FBF9F5] flex flex-col items-center justify-center gap-3 z-10">
-                        <div className="w-6 h-6 border-2 border-[#161513]/20 border-t-[#161513] rounded-full animate-spin" />
-                        <span className="text-xs font-mono text-[#78726A]">Loading mobile view...</span>
-                      </div>
-                    )}
-                    <iframe
-                      key={`mobile-${iframeKey}`}
-                      src={project.liveUrl}
+                  <div className="flex-1 relative bg-white rounded-b-[36px] overflow-hidden min-h-0">
+                    <ScaledMobilePreview
+                      url={project.liveUrl}
                       title={`${project.title} Mobile Live View`}
-                      className="w-full h-full border-0"
-                      onLoad={() => setIsLoading(false)}
+                      nativeHeight={720}
                     />
                   </div>
 

@@ -3,6 +3,7 @@ import { ArrowUpRight, Smartphone, Monitor, Layers, Eye } from 'lucide-react';
 import { PORTFOLIO_PROJECTS } from '../data/portfolioData';
 import { PortfolioProject } from '../types';
 import { ScaledDesktopPreview } from './ScaledDesktopPreview';
+import { ScaledMobilePreview } from './ScaledMobilePreview';
 
 interface SelectedWorkProps {
   onSelectCaseStudy: (project: PortfolioProject) => void;
@@ -181,10 +182,8 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
 
                     {/* Viewport Content */}
                     {currentMode === 'mobile' ? (
-                      /* Realistic Smartphone Device Chassis without corner clipping */
                       <div className="py-6 px-4 bg-[#E8E4DC]/50 flex justify-center items-center">
                         <div className="w-[370px] max-w-full bg-[#1A1918] rounded-[42px] p-2.5 shadow-2xl border-2 border-[#33312E] relative flex flex-col overflow-hidden">
-                          {/* Clean Top Status Bar with Dynamic Island */}
                           <div className="h-8 bg-[#1A1918] flex items-center justify-between px-5 text-[10px] text-white/70 font-mono select-none shrink-0 mb-1">
                             <span>9:41</span>
                             <div className="w-20 h-4 bg-black rounded-full flex items-center justify-center gap-1 px-2 border border-white/10 shadow-inner">
@@ -199,17 +198,13 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
                             </div>
                           </div>
 
-                          {/* Mobile Screen Frame - Flat top edge ensures logo and menu are never clipped by corners */}
-                          <div className="h-[540px] sm:h-[600px] bg-white rounded-b-[28px] overflow-hidden relative shadow-inner">
-                            <iframe
-                              src={project.liveUrl}
+                          <div className="rounded-b-[28px] overflow-hidden relative shadow-inner bg-white">
+                            <ScaledMobilePreview
+                              url={project.liveUrl}
                               title={`${project.title} live mobile preview`}
-                              className="w-full h-full border-0"
-                              loading="lazy"
                             />
                           </div>
 
-                          {/* Bottom Home Indicator */}
                           <div className="py-2 bg-[#1A1918] flex justify-center shrink-0">
                             <div className="w-28 h-1 bg-white/40 rounded-full" />
                           </div>
