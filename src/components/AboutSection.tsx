@@ -81,7 +81,10 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenContact }) => 
 
               <div className="absolute inset-0 bg-gradient-to-t from-[#161513]/95 via-[#161513]/40 to-transparent flex flex-col justify-end p-6 text-[#FBF9F5]">
                 <div className="inline-flex items-center gap-2 mb-2">
-                  <span className="w-2 h-2 rounded-full bg-[#2E7D32] animate-pulse" />
+                  <span className="relative flex h-2.5 w-2.5 shrink-0">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4ADE80] opacity-70" />
+                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#22C55E] shadow-[0_0_0_2px_rgba(34,197,94,0.35)]" />
+                  </span>
                   <span className="text-[11px] font-mono tracking-wider uppercase text-[#D8D2C4]">
                     Available for Client Projects
                   </span>
