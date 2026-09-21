@@ -9,8 +9,8 @@
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "predeploy": "GITHUB_PAGES=true npm run build",
+    "deploy": "gh-pages -d dist -t --nojekyll"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

@@ -5,8 +5,9 @@ import { defineConfig } from 'vite';
 
 export default defineConfig(() => {
   return {
-    // Project Pages URL: https://smaranballa.github.io/smaran-portfolio/
-    base: '/smaran-portfolio/',
+    // GitHub Pages project site: https://smaranballa.github.io/smaran-portfolio/
+    // Keep "/" for local `npm run dev`.
+    base: process.env.GITHUB_PAGES === 'true' ? '/smaran-portfolio/' : '/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
