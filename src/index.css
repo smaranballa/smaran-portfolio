@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  /* Ensure all clickable and interactive elements explicitly display pointer cursor */
+  button,
+  [role="button"],
+  a,
+  input[type="submit"],
+  input[type="button"],
+  input[type="checkbox"],
+  input[type="radio"],
+  select,
+  summary,
+  .cursor-pointer {
+    cursor: pointer !important;
+  }
+}
+
+.font-serif-heading {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-sans-body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Subtle editorial borders */
+.border-subtle {
+  border-color: rgba(22, 21, 19, 0.08);
+}
+
+.border-subtle-strong {
+  border-color: rgba(22, 21, 19, 0.16);
+}
+
+/* Hide scrollbar for clean horizontal preview lists */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
