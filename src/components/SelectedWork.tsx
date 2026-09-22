@@ -16,6 +16,7 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
 }) => {
   const [activePreviewDevice, setActivePreviewDevice] = useState<{ [key: string]: 'desktop' | 'mobile' }>({
     'geetha-interiors': 'desktop',
+    'studio-samaya': 'desktop',
     'bheema-interiors': 'desktop',
   });
 

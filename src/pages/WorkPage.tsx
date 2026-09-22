@@ -16,11 +16,12 @@ export const WorkPage: React.FC<WorkPageProps> = ({ onOpenLiveDemo, onOpenContac
   const [filter, setFilter] = useState<'all' | 'residential' | 'modular'>('all');
   const [viewports, setViewports] = useState<{ [key: string]: 'desktop' | 'mobile' }>({
     'geetha-interiors': 'desktop',
+    'studio-samaya': 'desktop',
     'bheema-interiors': 'desktop',
   });
 
   const filteredProjects = PORTFOLIO_PROJECTS.filter((p) => {
-    if (filter === 'residential') return p.id === 'geetha-interiors';
+    if (filter === 'residential') return p.id === 'geetha-interiors' || p.id === 'studio-samaya';
     if (filter === 'modular') return p.id === 'bheema-interiors';
     return true;
   });

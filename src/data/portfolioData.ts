@@ -165,8 +165,146 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     },
   },
   {
-    id: 'bheema-interiors',
+    id: 'studio-samaya',
     number: '02',
+    title: 'Studio Samaya',
+    tagline: 'Luxury interior architecture & spatial design studio in Indiranagar, Bangalore — quiet luxury, timeless materials, considered living.',
+    description: 'An editorial monograph for a Bangalore interior architecture practice — full-bleed project photography, clear service scopes, and a refined commission-enquiry journey for discerning residential and commercial clients.',
+    studioArchetype: 'Luxury Interior Architecture & Spatial Design Studio',
+    clientLocation: 'Indiranagar, Bangalore',
+    focus: ['Editorial project monograph', 'Residential & commercial portfolio', 'Commission enquiry flow', 'Quiet-luxury brand presence'],
+    builtWith: ['Vite', 'React', 'TypeScript', 'Tailwind CSS'],
+    status: 'Client Website · Live',
+    liveUrl: 'https://studio-samaya.vercel.app/',
+    heroPreviewImage: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1800&q=85',
+    desktopScreenshot: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1800&q=85',
+    mobileScreenshot: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85',
+    detailShots: [
+      {
+        id: 's-d1',
+        title: 'The Courtyard Residence',
+        caption: 'Sunlit Indiranagar villa centered on an open courtyard, honed Kota stone, and warm Burma teak joinery.',
+        imageUrl: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1800&q=85',
+        aspect: '16/9',
+      },
+      {
+        id: 's-d2',
+        title: 'Sadashivanagar Sky Penthouse',
+        caption: 'High-altitude living framed by silver Navona travertine, custom walnut joinery, and treetop vistas.',
+        imageUrl: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1800&q=85',
+        aspect: '16/9',
+      },
+      {
+        id: 's-d3',
+        title: 'Atelier No. 7 & Private Gallery',
+        caption: 'Boutique advisory workplace and client salon on Lavelle Road with museum-grade lighting and acoustic privacy.',
+        imageUrl: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1800&q=85',
+        aspect: '4/3',
+      },
+      {
+        id: 's-d4',
+        title: 'Dining Pavilion & Teak Screens',
+        caption: 'Floor-to-ceiling slatted teak room dividers framing a dining pavilion with natural daylight ingress.',
+        imageUrl: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85',
+        aspect: '4/3',
+      },
+      {
+        id: 's-d5',
+        title: 'Primary Bath Suite',
+        caption: 'Seamless micro-cement and monolithic travertine bathing suite with quiet material restraint.',
+        imageUrl: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1800&q=85',
+        aspect: '16/9',
+      },
+      {
+        id: 's-d6',
+        title: 'Quartzite Kitchen Island',
+        caption: 'Bespoke kitchen island carved from brushed grey quartzite with integrated warm ambient lighting.',
+        imageUrl: 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=85',
+        aspect: '4/3',
+      },
+    ],
+    caseStudy: {
+      goal: 'Give Studio Samaya an authoritative digital monograph that mirrors their quiet-luxury craft — elevating perceived fee authority and making commission enquiries feel natural for high-intent residential and commercial clients.',
+      theExperience: [
+        'Full-bleed architectural photography across Indiranagar villas, penthouses, and boutique commercial ateliers',
+        'Clear service scopes spanning turnkey homes, renovations, bespoke millwork, and commercial fit-outs',
+        'Structured design methodology that builds client confidence before a site visit',
+        'Refined commission-enquiry journey with WhatsApp and email routing',
+        'Bangalore-local SEO and schema for luxury interior architecture discovery',
+      ],
+      designApproach: 'Architectural monograph aesthetic — warm paper neutrals, Marcellus/Tenor Sans display pairing, generous whitespace, and photography-first compositions that let materials and light lead.',
+      challenge: 'Discerning Bangalore homeowners and commercial clients needed a calm, credible digital presence that matched Studio Samaya\'s offline craft — not a generic interior-design template.',
+      approach: 'We structured the site as an editorial portfolio: selected works first, studio philosophy second, clear services, and a frictionless path to begin a project.',
+      design: 'Quiet luxury palette (#FBF9F5, #1E1C1A) with tactile warm neutrals — no visual noise competing with the photography.',
+      build: 'Vite + React + TypeScript with motion-driven parallax, optimized Unsplash/CDN imagery, and fast client-side route transitions.',
+      experience: 'Visitors can explore courtyard residences and commercial ateliers, understand turnkey scopes, and start a commission conversation in one step.',
+      phases: [
+        {
+          number: '01',
+          title: 'Brand & Portfolio Audit',
+          desc: 'Align on studio positioning — quiet luxury, honest materials, Indiranagar atelier — and curate flagship residential and commercial projects.',
+          deliverable: 'Content hierarchy & visual inventory',
+        },
+        {
+          number: '02',
+          title: 'Monograph Information Architecture',
+          desc: 'Map Work, Studio, Services, Reviews, and Contact into an editorial navigation suited to high-end commissions.',
+          deliverable: 'Route structure & conversion touchpoints',
+        },
+        {
+          number: '03',
+          title: 'Interface & Motion Design',
+          desc: 'Craft full-bleed hero compositions, inset photographic studies, and restrained micro-interactions that feel architectural rather than decorative.',
+          deliverable: 'High-fidelity design system & prototypes',
+        },
+        {
+          number: '04',
+          title: 'Vite React Engineering',
+          desc: 'Implement with React, TypeScript, Tailwind CSS, and Motion for scroll/parallax presence without sacrificing performance.',
+          deliverable: 'Production-ready responsive website',
+        },
+        {
+          number: '05',
+          title: 'SEO Schema & Launch',
+          desc: 'Ship LocalBusiness JSON-LD, Open Graph cards, and Vercel deployment for studio-samaya.vercel.app.',
+          deliverable: 'Live deployment & enquiry analytics ready',
+        },
+      ],
+    },
+    liveDemoHighlights: {
+      heroTitle: 'Spaces designed to be lived in.',
+      heroSubtitle: 'Interior architecture and spatial design for refined residential and commercial spaces — Bangalore, working across India.',
+      featuredProjects: [
+        {
+          name: 'The Courtyard Residence',
+          location: 'Indiranagar, Bangalore',
+          type: 'Full Residential Turnkey',
+          image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1800&q=85',
+          squareFeet: '6,800 sq.ft',
+        },
+        {
+          name: 'Sadashivanagar Sky Penthouse',
+          location: 'Sadashivanagar, Bangalore',
+          type: 'Luxury Penthouse Interiors',
+          image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1800&q=85',
+          squareFeet: 'Penthouse Suite',
+        },
+        {
+          name: 'Atelier No. 7 & Private Gallery',
+          location: 'Lavelle Road, Bangalore',
+          type: 'Commercial Fit-Out',
+          image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1800&q=85',
+          squareFeet: '4,200 sq.ft',
+        },
+      ],
+      services: ['Complete Home Interiors (Turnkey)', 'Home Renovation & Remodeling', 'Bespoke Millwork & Built-Ins', 'Commercial & Boutique Spaces'],
+      processSteps: ['Understanding How You Live', 'Visualizing Your Home', 'Precision On-Site Build', 'Welcome to Your New Home'],
+      whatsappPrompt: 'Hi Studio Samaya, I came across your website and would like to discuss a commission for my project.',
+    },
+  },
+  {
+    id: 'bheema-interiors',
+    number: '03',
     title: 'Bheema Modular Kitchen & Interiors',
     tagline: 'Precision modular kitchens, acoustic panelling, and modern living room carpentry in Bengaluru.',
     description: 'A high-conversion digital presence engineered to showcase factory-direct modular kitchen craftsmanship, modern entertainment walls, and capture instant quotation requests.',
@@ -309,7 +447,8 @@ export const getProjectById = (id: string): PortfolioProject | undefined => {
     (p) =>
       p.id === id ||
       (id === 'project-01' && p.id === 'geetha-interiors') ||
-      (id === 'project-02' && p.id === 'bheema-interiors')
+      (id === 'project-02' && p.id === 'studio-samaya') ||
+      (id === 'project-03' && p.id === 'bheema-interiors')
   );
 };
 

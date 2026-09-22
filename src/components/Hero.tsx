@@ -8,7 +8,7 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenContact, onOpenProjectDemo }) => {
-  const [activeTab, setActiveTab] = useState<'geetha-interiors' | 'bheema-interiors'>('geetha-interiors');
+  const [activeTab, setActiveTab] = useState<'geetha-interiors' | 'studio-samaya' | 'bheema-interiors'>('geetha-interiors');
   const [viewMode, setViewMode] = useState<'desktop' | 'mobile'>('desktop');
 
   const currentProject = PORTFOLIO_PROJECTS.find((p) => p.id === activeTab) || PORTFOLIO_PROJECTS[0];
@@ -75,7 +75,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onOpenProjectDemo }) 
               {/* Preview Bar Controls */}
               <div className="flex items-center justify-between pb-3.5 border-b border-[#161513]/8">
                 {/* Project Selector Tabs */}
-                <div className="flex items-center gap-1 p-1 bg-[#E4DFC] rounded-lg text-xs">
+                <div className="flex items-center gap-1 p-1 bg-[#E4DFC] rounded-lg text-xs flex-wrap">
                   <button
                     onClick={() => setActiveTab('geetha-interiors')}
                     className={`px-2.5 py-1 rounded-md font-medium transition-all ${
@@ -84,7 +84,17 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onOpenProjectDemo }) 
                         : 'text-[#656057] hover:text-[#161513]'
                     }`}
                   >
-                    01 · Geetha Interiors
+                    01 · Geetha
+                  </button>
+                  <button
+                    onClick={() => setActiveTab('studio-samaya')}
+                    className={`px-2.5 py-1 rounded-md font-medium transition-all ${
+                      activeTab === 'studio-samaya'
+                        ? 'bg-[#161513] text-[#FBF9F5] shadow-xs'
+                        : 'text-[#656057] hover:text-[#161513]'
+                    }`}
+                  >
+                    02 · Samaya
                   </button>
                   <button
                     onClick={() => setActiveTab('bheema-interiors')}
@@ -94,7 +104,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onOpenProjectDemo }) 
                         : 'text-[#656057] hover:text-[#161513]'
                     }`}
                   >
-                    02 · Bheema Interiors
+                    03 · Bheema
                   </button>
                 </div>
 
